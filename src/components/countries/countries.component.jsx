@@ -1,31 +1,15 @@
-import { useState } from 'react'
+import axios from 'axios'
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { setCountries } from '../../features/countries.slice'
+
 import CountryCardComponent from './country_card.component'
 
-/* TODO: Solo para pruebas */
-let countries = new Array(50).fill(
-  {
-    flag: '🇲🇽',
-    name: {
-      common: 'Mexico',
-      official: 'United Mexican States',
-      nativeName: {
-        spa: {
-          official: 'Estados Unidos Mexicanos',
-          common: 'México'
-        }
-      }
-    },
-    population: 128932753,
-    flags: {
-      png: 'https://flagcdn.com/w320/mx.png',
-      svg: 'https://flagcdn.com/mx.svg',
-      alt: 'The flag of Mexico is composed of three equal vertical bands of green, white and red, with the national coat of arms centered in the white band.'
-    },
-  }
-)
-
 const CountriesComponent = () => {
-  const COUNTRY_PER_PAGE = 10
+  const dispatch = useDispatch()
+  const countries = useSelector(store => store.countries.current)
+
+  const COUNTRY_PER_PAGE = 18
   const [pag, setPag] = useState(1)
 
   const handleMore = (_) => {
@@ -34,8 +18,17 @@ const CountriesComponent = () => {
     }
   }
 
+  const loadCountries = async () => {
+    const rest_countries = await axios.get('https://restcountries.com/v3.1/all')
+    dispatch(setCountries(rest_countries.data))
+  }
+
+  useEffect(() => {
+    loadCountries()
+  }, [])
+
   return (
-    <div className='countries-component grid place-items-center gap-24'>
+    <div className='countries-component grid place-items-center gap-24 pt-[68px]'>
       <div className='container grid gap-20 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 place-items-center'>
         { countries && countries.slice(0, COUNTRY_PER_PAGE * pag).map((country, k) => (
           <CountryCardComponent country={ country } key={k}/>
