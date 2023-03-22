@@ -1,7 +1,11 @@
+import HeaderComponent from '../components/header/header.component'
+
 const MainLayout = ({ children }) => {
   return (
     <main>
-      { children }
+      <HeaderComponent />
+      
+      { children /* Vistas */}
     </main>
   )
 }

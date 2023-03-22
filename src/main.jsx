@@ -9,6 +9,7 @@ import { RouterProvider } from 'react-router-dom'
 
 import MainLayout from './layouts/main.layout'
 
+import './icons/icomoon/icomoon.css'
 import './styles/global.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
