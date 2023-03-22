@@ -17,7 +17,7 @@ const HeaderComponent = () => {
   
   return (
     <header
-      className={`w-full fixed min-h-[48px] top-0 left-0 grid place-items-center transition ${ scrolled ? 'shadow-md backdrop-blur-md' : 'shadow-none' }`}
+      className={`w-full fixed z-50 min-h-[48px] top-0 left-0 grid place-items-center transition ${ scrolled ? 'shadow-md backdrop-blur-md' : 'shadow-none' }`}
       >
       <div className='container w-11/12 flex justify-between'>
         <div className='header-container h-c-title flex items-center gap-2'>

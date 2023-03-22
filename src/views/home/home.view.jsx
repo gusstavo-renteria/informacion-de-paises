@@ -1,7 +1,9 @@
+import CountriesComponent from '../../components/countries/countries.component'
+
 const HomeView = () => {
   return (
     <section id='HOME'>
-      <h2>Inicio</h2>
+      <CountriesComponent />
     </section>
   )
 }
