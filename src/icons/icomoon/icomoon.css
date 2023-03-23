@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('./icomoon.eot?cnbhct');
-  src:  url('./icomoon.eot?cnbhct#iefix') format('embedded-opentype'),
-    url('./icomoon.ttf?cnbhct') format('truetype'),
-    url('./icomoon.woff?cnbhct') format('woff'),
-    url('./icomoon.svg?cnbhct#icomoon') format('svg');
+  src:  url('./icomoon.eot?lok6qv');
+  src:  url('./icomoon.eot?lok6qv#iefix') format('embedded-opentype'),
+    url('./icomoon.ttf?lok6qv') format('truetype'),
+    url('./icomoon.woff?lok6qv') format('woff'),
+    url('./icomoon.svg?lok6qv#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -28,18 +28,30 @@
 .icon-search:before {
   content: "\f002";
 }
+.icon-map-marker:before {
+  content: "\f041";
+}
+.icon-certificate:before {
+  content: "\f0a3";
+}
 .icon-globe:before {
   content: "\f0ac";
 }
-.icon-group:before {
-  content: "\f0c0";
-}
 .icon-users:before {
   content: "\f0c0";
+}
+.icon-money:before {
+  content: "\f0d6";
+}
+.icon-compass:before {
+  content: "\f14e";
 }
 .icon-sun-o:before {
   content: "\f185";
 }
 .icon-moon-o:before {
   content: "\f186";
+}
+.icon-language:before {
+  content: "\f1ab";
 }

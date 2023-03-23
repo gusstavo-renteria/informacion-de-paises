@@ -1,6 +1,17 @@
+import { useNavigate } from 'react-router-dom'
+
 const CountryCardComponent = ({ country }) => {
+  const navigate = useNavigate()
+
+  const handleClick = (_) => {
+    navigate(`/country/${ country.name.common }`)
+  }
+
   return (
-    <div className='country-card grid w-full rounded-md overflow-hidden drop-shadow-md'>
+    <div
+      onClick={ handleClick }
+      className='country-card grid w-full rounded-md overflow-hidden drop-shadow-md'
+      >
       <div className='c-card container relative grid place-items-center'>
         
         <img
