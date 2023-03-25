@@ -25,16 +25,28 @@ export const countrySlice = createSlice({
     addPage: state => {
       if(COUNTRIES_PER_PAGE * state.listed.page < state.listed.data.length) {
         state.listed.page          = state.listed.page + 1
-        state.listed.last_page     =  COUNTRIES_PER_PAGE * state.listed.page >= state.listed.data.length
+        state.listed.last_page     = COUNTRIES_PER_PAGE * state.listed.page >= state.listed.data.length
       }
       else state.listed.last_page = true
     },
 
     setFilter: (state, action) => {
       state.listed.page = 1
-      state.listed.data = state.all.filter(country => country.region.toLowerCase() == action.payload.toLowerCase())
       state.listed.filter = action.payload
-      state.listed.last_page = false
+      state.listed.data = state.all.filter(country => country.region.toLowerCase() == action.payload.toLowerCase())
+      state.listed.last_page = COUNTRIES_PER_PAGE * state.listed.page >= state.listed.data.length
+    },
+
+    searchCountry: (state, action) => {
+      state.listed.page = 1
+      state.listed.filter = null
+
+      state.listed.data = state.all.filter(country => {
+        return (country.name.common.toLowerCase().startsWith(action.payload.toLowerCase()))
+                // || country.name.official.toLowerCase().startsWith(action.payload.toLowerCase()))
+                // || country.translations.spa?.official.toLowerCase().split(' ').some(name => name.startsWith(action.payload.toLowerCase())))
+      })
+      state.listed.last_page = COUNTRIES_PER_PAGE * state.listed.page >= state.listed.data.length
     }
   },
   extraReducers: (builder) => {
@@ -50,5 +62,5 @@ export const countrySlice = createSlice({
   }
 })
 
-export const { addPage, setFilter } = countrySlice.actions
+export const { addPage, setFilter, searchCountry } = countrySlice.actions
 export default countrySlice.reducer

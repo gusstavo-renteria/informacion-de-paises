@@ -18,7 +18,7 @@ const CountriesComponent = () => {
           <CountryCardComponent country={ country } key={k}/>
         )) }
       </div>
-      <button onClick={ handleMore } className={`bg-black text-white text-4xl px-4 py-1 ${ countries.listed.last_page && 'pointer-events-none opacity-20 select-none' }`}>Mostrar más</button>
+      <button onClick={ handleMore } className={`bg-black text-white text-4xl px-4 py-1 ${ countries.listed.last_page && 'hidden' }`}>Mostrar más</button>
     </div>
   )
 }
